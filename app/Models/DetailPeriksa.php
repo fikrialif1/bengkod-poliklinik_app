@@ -4,29 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DaftarPoli extends Model
+class DetailPeriksa extends Model
 {
-    protected $table = 'daftar_poli';
+    protected $table = 'detail_periksa';
 
     protected $fillable = [
-        'id_pasien',
-        'id_jadwal',
-        'keluhan',
-        'no_antrian'
+        'id_periksa',
+        'id_obat'
     ];
 
-    public function pasien()
+    public function periksa()
     {
-        return $this->belongsTo(Pasien::class, 'id_pasien');
+        return $this->belongsTo(Periksa::class, 'id_periksa');
     }
 
-    public function jadwalPeriksa()
+    public function obat()
     {
-        return $this->belongsTo(JadwalPeriksa::class, 'id_jadwal');
-    }
-
-    public function periksas()
-    {
-        return $this->hasMany(Periksa::class, 'id_daftar_poli');
+        return $this->belongsTo(Obat::class, 'id_obat');
     }
 }
